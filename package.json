@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "figma-plugin-typescript-boilerplate",
+  "name": "figma-css-colors",
   "version": "1.0.0",
-  "description": "Figma plugin TypeScript boilerplate to start developing right away.",
+  "description": "Get the value of every CSS Color inside Figma",
   "scripts": {
     "start": "npm run dev",
     "dev": "webpack --watch",
@@ -29,9 +29,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aarongarciah/figma-plugin-typescript-boilerplate"
+    "url": "https://github.com/aarongarciah/figma-css-colors"
   },
-  "homepage": "https://github.com/aarongarciah/figma-plugin-typescript-boilerplate#readme",
+  "homepage": "https://github.com/aarongarciah/figma-css-colors#readme",
   "devDependencies": {
     "@types/figma": "^1.0.3",
     "@types/jest": "^25.1.4",
@@ -64,8 +64,9 @@
   "keywords": [
     "figma",
     "plugin",
-    "figma plugin",
-    "boilerplate",
+    "color",
+    "css",
+    "colors",
     "typescript",
     "eslint",
     "stylelint",

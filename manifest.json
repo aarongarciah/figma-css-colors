@@ -1,5 +1,5 @@
 {
-  "name": "Figma Plugin TypeScript Boilerplate",
+  "name": "Figma CSS Colors",
   "api": "1.0.0",
   "main": "dist/plugin.js",
   "ui": "dist/ui.html"
