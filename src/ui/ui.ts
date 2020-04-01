@@ -6,6 +6,13 @@ import { UIActionTypes, UIAction } from '../types';
 
 import './ui.css';
 
+interface Color {
+  name: string;
+  hex: string;
+  rgb: string;
+  hsl: string;
+}
+
 const $input = document.querySelector('.input');
 const $list = document.querySelector('.list');
 const clipboardIcon = `<svg class="button__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -14,9 +21,16 @@ const clipboardIcon = `<svg class="button__icon" xmlns="http://www.w3.org/2000/s
 const colors = Object.values(colorsObj);
 
 // Generate color list markup
-function colorsMarkup(
-  colors: Array<{ name: string; hex: string; rgb: string; hsl: string }>,
-): string {
+function colorButtomMarkup(colorCode: string): string {
+  return `<button class="button" type="button" data-color-button="${colorCode}">
+    <span class="button__inner">
+      <span class="button__text">${colorCode}</span>
+      ${clipboardIcon}
+    </span>
+  </button>`;
+}
+
+function colorsMarkup(colors: Array<Color>): string {
   return colors
     .map(
       (color) => `
@@ -27,24 +41,9 @@ function colorsMarkup(
         >
           <div class="item__name">${color.name}</div>
           <div class="item__buttons">
-            <button class="button" type="button" data-color-button="${color.hex}">
-              <span class="button__inner">
-                <span class="button__text">${color.hex}</span>
-                ${clipboardIcon}
-              </span>
-            </button>
-            <button class="button" type="button" data-color-button="${color.rgb}">
-              <span class="button__inner">
-                <span class="button__text">${color.rgb}</span>
-                ${clipboardIcon}
-              </span>
-            </button>
-            <button class="button" type="button" data-color-button="${color.hsl}">
-              <span class="button__inner">
-                <span class="button__text">${color.hsl}</span>
-                ${clipboardIcon}
-              </span>
-            </button>
+            ${colorButtomMarkup(color.hex)}
+            ${colorButtomMarkup(color.rgb)}
+            ${colorButtomMarkup(color.hsl)}
           </div>
         </li>
       `,
