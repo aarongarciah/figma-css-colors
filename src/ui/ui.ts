@@ -33,10 +33,6 @@ function colorsMarkup(colors: Array<Color>): string {
   return colors
     .map((color) => {
       const rgb = color.rgb.replace(/[^\d,]/g, '').split(',');
-      // console.log(rgb[0]);
-      if (rgb[0] === '0') {
-        console.log(color.rgb);
-      }
       return `
         <li
           class="item"
