@@ -1,4 +1,3 @@
-import isDarkColor from 'is-dark-color';
 import colorsObj from 'css-spec-colors';
 import clipboardCopy from 'clipboard-copy';
 
@@ -32,12 +31,17 @@ function colorButtomMarkup(colorCode: string): string {
 
 function colorsMarkup(colors: Array<Color>): string {
   return colors
-    .map(
-      (color) => `
+    .map((color) => {
+      const rgb = color.rgb.replace(/[^\d,]/g, '').split(',');
+      // console.log(rgb[0]);
+      if (rgb[0] === '0') {
+        console.log(color.rgb);
+      }
+      return `
         <li
-          class="item${isDarkColor(color.hex) ? ' item--dark' : ''}"
+          class="item"
           data-color-name="${color.name}"
-          style="background-color: ${color.hex};"
+          style="background-color: ${color.hex}; --r: ${rgb[0]}; --g: ${rgb[1]}; --b: ${rgb[2]};"
         >
           <div class="item__name">${color.name}</div>
           <div class="item__buttons">
@@ -46,8 +50,8 @@ function colorsMarkup(colors: Array<Color>): string {
             ${colorButtomMarkup(color.hsl)}
           </div>
         </li>
-      `,
-    )
+      `;
+    })
     .join('');
 }
 
