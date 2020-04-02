@@ -15,6 +15,8 @@ interface Color {
 
 const $input = document.querySelector('.input');
 const $list = document.querySelector('.list');
+const $form = document.querySelector('form');
+const $notfound = document.querySelector('.notfound');
 const clipboardIcon = `<svg class="button__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
   <use xlink:href="#clipboard-icon"/>
 </svg>`;
@@ -78,7 +80,7 @@ function closeWithEscapeKey(): void {
 
 // Attach event listeners (for this specific demo)
 function listeners(): void {
-  if (!$input) {
+  if (!$input || !$form || !$notfound) {
     return;
   }
 
@@ -97,6 +99,12 @@ function listeners(): void {
     const filteredColors = colors.filter((color) => color.name.includes(value));
 
     $list.innerHTML = colorsMarkup(filteredColors);
+
+    if (filteredColors.length) {
+      $notfound.setAttribute('hidden', 'hidden');
+    } else {
+      $notfound.removeAttribute('hidden');
+    }
   });
 
   document.addEventListener(
@@ -126,11 +134,15 @@ function listeners(): void {
     },
     true,
   );
+
+  $form.addEventListener('submit', function (event: Event) {
+    event?.preventDefault();
+  });
 }
 
 (function init(): void {
   // Check if necessary DOM elements are in place
-  if (!$input || !$list) {
+  if (!$input || !$list || !$form || !$notfound) {
     postMessage({ type: UIActionTypes.NOTIFY, payload: "Required DOM elements don't exist" });
     return;
   }
