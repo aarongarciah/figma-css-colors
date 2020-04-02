@@ -5,7 +5,7 @@
 [![Actions Status](https://github.com/aarongarciah/figma-css-colors/workflows/CI/badge.svg)](https://github.com/aarongarciah/figma-css-colors/actions)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-**Get color values for css color keywords in Figma**
+**Get the value for CSS color keywords in Figma**
 
 > `papayawhip` => `#ffefd5` | `rgb(255, 239, 213)` | `hsl(37, 100%, 92%)`
 
