@@ -1,4 +1,4 @@
-# Figma CSS Colors
+# 🎨Figma CSS Colors
 
 ![Figma CSS Colors](.github/cover.jpg)
 
