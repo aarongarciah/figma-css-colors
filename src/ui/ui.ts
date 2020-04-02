@@ -117,7 +117,9 @@ function listeners(): void {
           $text.innerText = 'Copied!';
 
           setTimeout(() => {
-            $text.innerText = buttonText;
+            if ($text) {
+              $text.innerText = buttonText;
+            }
           }, 1000);
         });
       }
