@@ -1,5 +1,6 @@
 import colorsObj from 'css-spec-colors';
 import clipboardCopy from 'clipboard-copy';
+import isDarkColor from 'is-dark-color';
 
 import { UIActionTypes, UIAction } from '../types';
 
@@ -21,7 +22,7 @@ const colors = Object.values(colorsObj);
 
 // Generate color list markup
 function colorButtomMarkup(colorCode: string): string {
-  return `<button class="button" type="button" data-color-button="${colorCode}">
+  return `<button class="button" type="button" data-color-button="${colorCode}" title="Click to copy">
     <span class="button__inner">
       <span class="button__text">${colorCode}</span>
       ${clipboardIcon}
@@ -31,13 +32,12 @@ function colorButtomMarkup(colorCode: string): string {
 
 function colorsMarkup(colors: Array<Color>): string {
   return colors
-    .map((color) => {
-      const rgb = color.rgb.replace(/[^\d,]/g, '').split(',');
-      return `
+    .map(
+      (color) => `
         <li
-          class="item"
+          class="item${isDarkColor(color.hex) ? ' item--dark' : ''}"
           data-color-name="${color.name}"
-          style="background-color: ${color.hex}; --r: ${rgb[0]}; --g: ${rgb[1]}; --b: ${rgb[2]};"
+          style="background-color: ${color.hex};"
         >
           <div class="item__name">${color.name}</div>
           <div class="item__buttons">
@@ -46,8 +46,8 @@ function colorsMarkup(colors: Array<Color>): string {
             ${colorButtomMarkup(color.hsl)}
           </div>
         </li>
-      `;
-    })
+      `,
+    )
     .join('');
 }
 
@@ -101,7 +101,7 @@ function listeners(): void {
 
   document.addEventListener(
     'click',
-    async function (event: MouseEvent) {
+    function (event: MouseEvent) {
       const target = event.target as HTMLElement & { ['data-color-button']: string };
       const colorValue = target.getAttribute('data-color-button');
 
