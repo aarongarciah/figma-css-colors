@@ -4,6 +4,7 @@
 
 [![Actions Status](https://github.com/aarongarciah/figma-css-colors/workflows/CI/badge.svg)](https://github.com/aarongarciah/figma-css-colors/actions)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Known Vulnerabilities](https://snyk.io/test/github/aarongarciah/figma-css-colors/badge.svg?targetFile=package.json)](https://snyk.io/test/github/aarongarciah/figma-css-colors?targetFile=package.json)
 
 **Get the value for CSS color keywords in Figma**
 
