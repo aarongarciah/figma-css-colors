@@ -1,6 +1,6 @@
 # Figma CSS Colors
 
-![Figma CSS Colors](.github/cover.jpg)
+[![Figma CSS Colors](.github/cover.jpg)](https://www.figma.com/community/plugin/827516957743806004/CSS-Colors)
 
 [![Actions Status](https://github.com/aarongarciah/figma-css-colors/workflows/CI/badge.svg)](https://github.com/aarongarciah/figma-css-colors/actions)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
